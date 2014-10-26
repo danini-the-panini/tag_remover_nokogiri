@@ -1,5 +1,10 @@
 require 'tag_remover'
 
+if ARGV.length < 3
+  puts "Usage: rmtags INPUT_FILE OUTPUT_FILE TAG [TAG, TAG, ...]"
+  exit 1
+end
+
 input_filename = ARGV[0] || 'input.xml'
 output_filename = ARGV[1] || 'output.xml'
 
