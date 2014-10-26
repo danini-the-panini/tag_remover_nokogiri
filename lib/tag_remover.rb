@@ -1,5 +1,9 @@
 require "tag_remover/version"
 
 module TagRemover
-  # Your code goes here...
+
+  def self.process input, output, opts
+
+  end
+
 end
