@@ -9,8 +9,6 @@ module TagRemover
     depth = 0
 
     input.each_line.reduce(0) do |i,line|
-      puts i if i % 10_000 == 0
-
       if in_tag
         in_tag_str = tags_to_remove[in_tag]
 
@@ -35,8 +33,6 @@ module TagRemover
         end
         output.write line unless found_tag
       end
-
-      i+1
     end
   end
 
