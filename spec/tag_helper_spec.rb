@@ -4,11 +4,11 @@ describe TagRemover do
   describe ".process" do
     it "removes elements" do
       input = StringIO.new """
-      <root>\n
-        <remove>\n
+      <root>
+        <remove>
           Some contents
-        </remove>\n
-      </root>\n
+        </remove>
+      </root>
       """
       tags_to_remove = ['remove']
 
@@ -16,17 +16,17 @@ describe TagRemover do
 
       TagRemover.process input, output, remove_tags: tags_to_remove
 
-      expect(output.string).to be """
-      <root>\n
-      </root>\n
+      expect(output.string).to eq """
+      <root>
+      </root>
       """
     end
 
     it "removes single tags" do
       input = StringIO.new """
-      <root>\n
-        <remove/>\n
-      </root>\n
+      <root>
+        <remove/>
+      </root>
       """
       tags_to_remove = ['remove']
 
@@ -34,18 +34,18 @@ describe TagRemover do
 
       TagRemover.process input, output, remove_tags: tags_to_remove
 
-      expect(output.string).to be """
-      <root>\n
-      </root>\n
+      expect(output.string).to eq """
+      <root>
+      </root>
       """
     end
 
     it "keeps elements" do
       input = StringIO.new """
-      <root>\n
-        <keep>\n
-        </keep>\n
-      </root>\n
+      <root>
+        <keep>
+        </keep>
+      </root>
       """
       tags_to_remove = ['remove']
 
@@ -58,8 +58,8 @@ describe TagRemover do
 
     it "is ok with doing nothing" do
       input = StringIO.new """
-      <root>\n
-      </root>\n
+      <root>
+      </root>
       """
 
       output = StringIO.new
