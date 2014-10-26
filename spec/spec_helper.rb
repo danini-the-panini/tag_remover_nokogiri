@@ -1,0 +1,3 @@
+require 'tag_remover'
+
+

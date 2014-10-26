@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = TagRemover::VERSION
   spec.authors       = ["Daniel Smith"]
   spec.email         = ["jellymann@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Remove elements from large XML documents.}
+  spec.description   = %q{Tag remover let's you remove all elements of specified tags from extremely large XML documents without parsing or loading the whole thing in memory, useful for processing unreasonably large documents without making your server fall over.}
+  spec.homepage      = "https://github.com/jellymann/tag_remover"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec", "~> 3.1"
 end
