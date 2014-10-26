@@ -68,5 +68,26 @@ describe TagRemover do
 
       expect(output.string).to eq input.string
     end
+
+    it "removes nested tags" do
+      input = StringIO.new """
+      <root>
+        <remove>
+          <remove>
+          </remove>
+        </remove>
+      </root>
+      """
+      tags_to_remove = ['remove']
+
+      output = StringIO.new
+
+      TagRemover.process input, output, remove_tags: tags_to_remove
+
+      expect(output.string).to eq """
+      <root>
+      </root>
+      """
+    end
   end
 end
