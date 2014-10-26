@@ -10,9 +10,8 @@ describe TagRemover do
         </remove>
       </root>
       """
-      tags_to_remove = ['remove']
-
       output = StringIO.new
+      tags_to_remove = ['remove']
 
       TagRemover.process input, output, remove_tags: tags_to_remove
 
@@ -28,9 +27,8 @@ describe TagRemover do
         <remove/>
       </root>
       """
-      tags_to_remove = ['remove']
-
       output = StringIO.new
+      tags_to_remove = ['remove']
 
       TagRemover.process input, output, remove_tags: tags_to_remove
 
@@ -61,7 +59,6 @@ describe TagRemover do
       <root>
       </root>
       """
-
       output = StringIO.new
 
       TagRemover.process input, output
@@ -79,7 +76,6 @@ describe TagRemover do
       </root>
       """
       tags_to_remove = ['remove']
-
       output = StringIO.new
 
       TagRemover.process input, output, remove_tags: tags_to_remove
@@ -88,6 +84,16 @@ describe TagRemover do
       <root>
       </root>
       """
+    end
+
+    it "closes the streams" do
+      input = StringIO.new "<root></root>"
+      output = StringIO.new
+
+      TagRemover.process input, output, close_streams: true
+
+      expect(input).to be_closed
+      expect(output).to be_closed
     end
   end
 end
