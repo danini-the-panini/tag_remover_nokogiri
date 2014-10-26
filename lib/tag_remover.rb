@@ -8,7 +8,7 @@ module TagRemover
     in_tag = nil
     depth = 0
 
-    input.each_line.reduce(0) do |i,line|
+    input.each_line.each do |line|
       if in_tag
         in_tag_str = tags_to_remove[in_tag]
 
