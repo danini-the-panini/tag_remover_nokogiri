@@ -34,6 +34,11 @@ module TagRemover
         output.write line unless found_tag
       end
     end
+
+    if opts[:close_streams]
+      input.close
+      output.close
+    end
   end
 
 end
