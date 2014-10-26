@@ -32,6 +32,10 @@ Options include:
   * `close_streams`: (`true`|`false`) If set, TagRemover will close `input_stream` and `output_stream` once the proccess is over.
   * [NOT IMPLEMENTED] `format`: (`true`|`false`) If set, then the contents of `output_stream` will be formatted.
 
+TagRemover can be used from the command line with the `rmtags` command. The following is an example that reads input.xml and writes the output to output.xml, removing all `div` and `img` elements:
+
+    $ rmtags input.xml output.xml div img
+
 ## Limitations
 
 Tag remover currently only works correctly if the XML is formatted with only one tag per line.
