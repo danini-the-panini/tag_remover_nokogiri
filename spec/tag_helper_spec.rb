@@ -43,6 +43,25 @@ describe TagRemover do
       """
     end
 
+    it "removes tags with attributes" do
+      input = StringIO.new '''
+      <root>
+        <remove x="y" a="b" >
+        </remove>
+        <remove x="y" a="b" />
+      </root>
+      '''
+      output = StringIO.new
+      tags_to_remove = ['remove']
+
+      TagRemover.process input, output, remove_tags: tags_to_remove
+
+      expect(output.string).to eq """
+      <root>
+      </root>
+      """
+    end
+
     it "keeps elements" do
       input = StringIO.new """
       <root>

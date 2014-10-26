@@ -12,7 +12,7 @@ module TagRemover
       if in_tag
         in_tag_str = tags_to_remove[in_tag]
 
-        if line =~ /<#{in_tag_str}\s*>/
+        if line =~ /<#{in_tag_str}(\s|(\s+.+?=(".+?"|'.+?')))*?>/
           depth += 1
         elsif line =~ /<\/#{in_tag_str}\s*>/
           depth -= 1
@@ -21,12 +21,12 @@ module TagRemover
       else
         found_tag = false
         tags_to_remove.each_with_index do |tag,index|
-          if line =~ /<#{tag}\s*>/
+          if line =~ /<#{tag}(\s|(\s+.+?=(".+?"|'.+?')))*?>/
             in_tag = index
             depth = 1
             found_tag = true
             break
-          elsif line =~ /<#{tag}\s*\/\s*>/
+          elsif line =~ /<#{tag}(\s|(\s+.+?=(".+?"|'.+?')))*?\/\s*>/
             found_tag = true
             break
           end
