@@ -12,21 +12,21 @@ module TagRemover
       if in_tag
         in_tag_str = tags_to_remove[in_tag]
 
-        if line =~ /<#{in_tag_str}>/
+        if line =~ /<#{in_tag_str}\s*>/
           depth += 1
-        elsif line =~ /<\/#{in_tag_str}>/
+        elsif line =~ /<\/#{in_tag_str}\s*>/
           depth -= 1
           in_tag = nil if depth == 0
         end
       else
         found_tag = false
         tags_to_remove.each_with_index do |tag,index|
-          if line =~ /<#{tag}>/
+          if line =~ /<#{tag}\s*>/
             in_tag = index
             depth = 1
             found_tag = true
             break
-          elsif line =~ /<#{tag}\/>/
+          elsif line =~ /<#{tag}\s*\/\s*>/
             found_tag = true
             break
           end
