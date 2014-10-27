@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'tag_remover'
 
 if ARGV.length < 3
