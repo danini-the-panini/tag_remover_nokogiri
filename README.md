@@ -1,4 +1,4 @@
-# TagRemover
+# TagRemover (Nokogiri edition)
 
 Tag remover let's you remove all elements of specified tags from extremely large XML documents without parsing or loading the whole thing in memory, useful for processing unreasonably large documents without making your server fall over.
 
