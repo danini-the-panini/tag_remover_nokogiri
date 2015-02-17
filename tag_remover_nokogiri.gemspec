@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'tag_remover/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "tag_remover"
+  spec.name          = "tag_remover_nokogiri"
   spec.version       = TagRemover::VERSION
   spec.authors       = ["Daniel Smith"]
   spec.email         = ["jellymann@gmail.com"]
-  spec.summary       = %q{Remove elements from large XML documents.}
+  spec.summary       = %q{Remove elements from large XML documents (using nokogiri).}
   spec.description   = %q{Tag remover let's you remove all elements of specified tags from extremely large XML documents without parsing or loading the whole thing in memory, useful for processing unreasonably large documents without making your server fall over.}
-  spec.homepage      = "https://github.com/jellymann/tag_remover"
+  spec.homepage      = "https://github.com/jellymann/tag_remover_nokogiri"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
