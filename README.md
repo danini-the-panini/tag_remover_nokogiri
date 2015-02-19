@@ -7,7 +7,7 @@ Tag remover let's you remove all elements of specified tags from extremely large
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'tag_remover'
+gem 'tag_remover_nokogiri'
 ```
 
 And then execute:
@@ -16,13 +16,15 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install tag_remover
+    $ gem install tag_remover_nokogiri
 
 ## Usage
 
-The following line will read XML from `input_stream`, and write it out to `output_stream` with all `div` and `img` elements removed.
+The following code will read XML from `input_stream`, and write it out to `output_stream` with all `div` and `img` elements removed.
 
 ```ruby
+require 'tag_remover'
+
 TagRemover.process input_stream, output_stream, remove_tags: ['div', 'img']
 ```
 
@@ -36,13 +38,9 @@ TagRemover can be used from the command line with the `rmtags` command. The foll
 
     $ rmtags input.xml output.xml div img
 
-## Limitations
-
-Tag remover currently only works correctly if the XML is formatted with only one tag per line.
-
 ## Contributing
 
-  1. Fork it ( https://github.com/[my-github-username]/tag_remover/fork )
+  1. Fork it ( https://github.com/[my-github-username]/tag_remover_nokogiri/fork )
   2. Create your feature branch (`git checkout -b my-new-feature`)
   3. Commit your changes (`git commit -am 'Add some feature'`)
   4. Push to the branch (`git push origin my-new-feature`)
