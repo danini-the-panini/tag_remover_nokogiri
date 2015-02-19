@@ -26,8 +26,6 @@ describe TagRemover do
       input = StringIO.new """<root>
   <remove/>
   <remove />
-  <remove/ >
-  <remove / >
 </root>
 """
       output = StringIO.new
