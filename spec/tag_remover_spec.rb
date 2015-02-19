@@ -40,6 +40,9 @@ describe TagRemover do
 
     it "removes tags with attributes" do
       input = StringIO.new '''<root>
+  <keep foo="bar" qux="baz" >
+  </keep>
+  <keep fizz="buzz" />
   <remove x="y" a="b" >
   </remove>
   <remove x="y" a="b" />
@@ -50,9 +53,12 @@ describe TagRemover do
 
       TagRemover.process input, output, remove_tags: tags_to_remove
 
-      expect(output.string).to eq """<root>
+      expect(output.string).to eq '''<root>
+<keep foo="bar" qux="baz" >
+</keep>
+<keep fizz="buzz" />
 </root>
-"""
+'''
     end
 
     it "deals with multiple tags on one line" do

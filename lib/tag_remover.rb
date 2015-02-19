@@ -73,11 +73,11 @@ module TagRemover
 
       def stringify tag
         if opening_tag? tag
-          "<#{tag.name}>\n"
+          "<#{with_attrs tag}>\n"
         elsif closing_tag? tag
           "</#{tag.name}>\n"
         elsif single_tag? tag
-          "<#{tag.name}/>\n"
+          "<#{with_attrs tag}/>\n"
         elsif tag.value?
           s = tag.value.strip
           s.empty? ? "" : "#{s}\n"
@@ -86,8 +86,10 @@ module TagRemover
         end
       end
 
-      def stringify_attributes tag
-
+      def with_attrs tag
+        return tag.name unless tag.attributes?
+        attrs = tag.attributes.map { |k,v| "#{k}=\"#{v}\""  }.join(' ')
+        "#{tag.name} #{attrs} "
       end
 
       def process_tag tag, type
